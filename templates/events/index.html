@@ -6,26 +6,42 @@
 <h1>События</h1>
 <a href="{% url 'event_create' %}">+ Добавить событие</a>
 
+<section>
+    <div>
+        <span>Общее количество событий</span>
+        <strong>{{ total_events }}</strong>
+    </div>
+    <div>
+        <span>Количество активных событий</span>
+        <strong>{{ active_events }}</strong>
+    </div>
+    <div>
+        <span>Количество закрытых событий</span>
+        <strong>{{ closed_events }}</strong>
+    </div>
+</section>
+
 <form method="get">
-    <input type="text" name="query" placeholder="Поиск по названию или описанию...">
+    <input type="text" name="query" placeholder="Поиск по названию или описанию..." value="{{ query }}">
     <select name="category">
-        <option value="">Все категории</option>
-        <option value="Technology">Technology</option>
-        <option value="Sport">Sport</option>
-        <option value="Education">Education</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Other">Other</option>
+        <option value="" {% if not category %}selected{% endif %}>Все категории</option>
+        <option value="Technology" {% if category|lower == 'technology' %}selected{% endif %}>Technology</option>
+        <option value="Sport" {% if category|lower == 'sport' %}selected{% endif %}>Sport</option>
+        <option value="Education" {% if category|lower == 'education' %}selected{% endif %}>Education</option>
+        <option value="Entertainment" {% if category|lower == 'entertainment' %}selected{% endif %}>Entertainment</option>
+        <option value="Other" {% if category|lower == 'other' %}selected{% endif %}>Other</option>
     </select>
     <select name="status">
-        <option value="">Все статусы</option>
-        <option value="open_for_registration">Open for registration</option>
-        <option value="ongoing">Ongoing</option>
-        <option value="completed">Completed</option>
-        <option value="cancelled">Cancelled</option>
-        <option value="planned">Planned</option>
-        <option value="upcoming">Upcoming</option>
+        <option value="" {% if not status %}selected{% endif %}>Все статусы</option>
+        <option value="open_for_registration" {% if status == 'open_for_registration' %}selected{% endif %}>Open for registration</option>
+        <option value="ongoing" {% if status == 'ongoing' %}selected{% endif %}>Ongoing</option>
+        <option value="completed" {% if status == 'completed' %}selected{% endif %}>Completed</option>
+        <option value="cancelled" {% if status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+        <option value="planned" {% if status == 'planned' %}selected{% endif %}>Planned</option>
+        <option value="upcoming" {% if status == 'upcoming' %}selected{% endif %}>Upcoming</option>
     </select>
     <button type="submit">Найти</button>
+    <a href="{% url 'index' %}">Сбросить</a>
 </form>
 
 {% if events %}

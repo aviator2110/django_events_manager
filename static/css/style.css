@@ -226,6 +226,68 @@ main > a[href*="create"]:active {
 }
 
 /* ==========================================================================
+   Metrics & Event Statistics (main > section)
+   ========================================================================== */
+
+main > section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-bottom: 38px;
+}
+
+main > section > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 22px 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    box-shadow: 3px 3px 0px #000000;
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+main > section > div:hover {
+    transform: translate(-2px, -2px);
+    border-color: var(--accent);
+    box-shadow: 4px 4px 0px var(--accent);
+}
+
+main > section > div > span {
+    font-family: var(--font-mono);
+    font-size: 0.775rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    line-height: 1.4;
+}
+
+main > section > div > strong {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--paper-white);
+    line-height: 1;
+}
+
+/* Color accents on metric numbers */
+main > section > div:nth-child(1) > strong {
+    color: var(--paper-white);
+}
+
+main > section > div:nth-child(2) > strong {
+    color: #34d399; /* Green for Active */
+}
+
+main > section > div:nth-child(3) > strong {
+    color: #94a3b8; /* Muted for Closed */
+}
+
+/* ==========================================================================
    Technical Console: Search & Filters (form[method="get"])
    ========================================================================== */
 
@@ -329,6 +391,48 @@ form[method="get"] button[type="submit"]:hover {
 }
 
 form[method="get"] button[type="submit"]:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--accent);
+}
+
+/* Filter Reset Button Link */
+form[method="get"] a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 22px;
+    background: #1a1e27;
+    color: var(--paper-white);
+    border: 2px solid #3c4355;
+    border-radius: var(--radius-sharp);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 3px 3px 0px #000000;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+form[method="get"] a::before {
+    content: "✕";
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+form[method="get"] a:hover {
+    color: #ffffff;
+    border-color: var(--accent);
+    background: #252b38;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--accent);
+}
+
+form[method="get"] a:active {
     transform: translate(2px, 2px);
     box-shadow: 1px 1px 0px var(--accent);
 }
@@ -933,7 +1037,8 @@ main > p:first-child:has(+ a[href*="index"])::before {
 
     form[method="get"] input[type="text"],
     form[method="get"] select,
-    form[method="get"] button[type="submit"] {
+    form[method="get"] button[type="submit"],
+    form[method="get"] a {
         width: 100%;
         flex: 1 1 auto;
     }

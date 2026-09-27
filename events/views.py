@@ -8,7 +8,12 @@ from django.shortcuts import render
 from . import data
 
 def index(request: HttpRequest) -> HttpResponse:
-    events = data.list_events()
+    all_events = data.list_events()
+    total_events = len(all_events)
+    closed_events = len([e for e in all_events if e.get('status') in ('completed', 'cancelled')])
+    active_events = total_events - closed_events
+
+    events = all_events
     query = request.GET.get('query', '').lower()
     category = request.GET.get('category', '').lower()
     status = request.GET.get('status', '').lower()
@@ -22,7 +27,22 @@ def index(request: HttpRequest) -> HttpResponse:
     if status:
         events = [event for event in events if status in event['status'].lower()]
         
-    return render(request, 'events/index.html', {'events': events})
+    return render(
+        request, 
+        'events/index.html', 
+        {
+            'events': events, 
+            'query': query, 
+            'category': category, 
+            'status': status,
+            'total_events': total_events,
+            'active_events': active_events,
+            'closed_events': closed_events,
+            'total_count': total_events,
+            'active_count': active_events,
+            'closed_count': closed_events,
+        }
+    )
 
 
 def event_detail(request: HttpRequest, event_id: int) -> HttpResponse:
