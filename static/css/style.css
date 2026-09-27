@@ -1,0 +1,945 @@
+/* ==========================================================================
+   EVENT.ARCHIVE // Swiss Industrial & Archival Exhibition Design System
+   Zero HTML Classes - 100% Pure Semantic Selectors & Architectural CSS
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap');
+
+:root {
+    /* Typographic Hierarchy */
+    --font-display: 'Syne', sans-serif;
+    --font-ui: 'Space Grotesk', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Editorial Palette */
+    --bg-canvas: #0c0e12;
+    --bg-surface: #14171d;
+    --bg-surface-hover: #191c24;
+    --bg-input: #090a0d;
+    --bg-header: rgba(12, 14, 18, 0.95);
+
+    /* Signal Accents */
+    --accent: #ff3b19;               /* Signal Vermillion */
+    --accent-hover: #e02f0f;
+    --paper-white: #ede8df;          /* Warm Archival White */
+    --text-primary: #ede8df;
+    --text-secondary: #9aa1b0;
+    --text-dim: #606777;
+    --danger: #ef4444;
+
+    /* Structural Grid & Borders */
+    --border-line: #242833;
+    --border-strong: #383e4d;
+    --border-accent: #ff3b19;
+
+    /* Architectural Hard Shadows (Zero AI Blurry Glow) */
+    --hard-shadow-sm: 3px 3px 0px #ff3b19;
+    --hard-shadow-white: 3px 3px 0px #ede8df;
+    --hard-shadow-card: 4px 4px 0px #ff3b19;
+    --hard-shadow-danger: 3px 3px 0px #ef4444;
+
+    --radius-sharp: 3px;
+}
+
+/* ==========================================================================
+   Reset & Canvas Architecture
+   ========================================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+}
+
+body {
+    font-family: var(--font-ui);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+
+    /* Subtle Technical Architectural Grid */
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 36px 36px;
+}
+
+/* ==========================================================================
+   Header & Nav Architecture (header, nav)
+   ========================================================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--bg-header);
+    border-bottom: 2px solid var(--border-line);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+}
+
+header nav {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Brand Identity */
+header nav > a:first-child {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--paper-white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.2s ease;
+}
+
+header nav > a:first-child::before {
+    content: "■";
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+header nav > a:first-child:hover {
+    color: var(--accent);
+}
+
+/* Nav links wrapper */
+header nav > div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Navigation Links */
+header nav > div > a {
+    font-family: var(--font-mono);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+header nav > div > a:hover {
+    color: var(--paper-white);
+    border-color: var(--border-strong);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* "+ Создать запись" Action Button in Header */
+header nav > div > a:last-child {
+    background: var(--accent);
+    color: #ffffff;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sharp);
+    box-shadow: 2px 2px 0px var(--paper-white);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+header nav > div > a:last-child:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--paper-white);
+    background: var(--accent-hover);
+}
+
+header nav > div > a:last-child:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--paper-white);
+}
+
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
+
+main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 50px 32px 100px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Editorial Page Headline (h1) */
+h1 {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    color: var(--paper-white);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+/* Top Action Button on Index (main > a[href*="create"]) */
+main > a[href*="create"] {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: #ffffff;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: var(--radius-sharp);
+    border: 1px solid var(--accent);
+    box-shadow: 3px 3px 0px var(--paper-white);
+    margin-bottom: 36px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+main > a[href*="create"]:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--paper-white);
+}
+
+main > a[href*="create"]:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--paper-white);
+}
+
+/* ==========================================================================
+   Technical Console: Search & Filters (form[method="get"])
+   ========================================================================== */
+
+form[method="get"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    margin-bottom: 48px;
+    position: relative;
+}
+
+/* Top accent rule on filter bar */
+form[method="get"]::before {
+    content: "INDEX FILTER // CONSOLE";
+    position: absolute;
+    top: -10px;
+    left: 18px;
+    background: var(--bg-canvas);
+    padding: 0 10px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+}
+
+/* Text Search input */
+form[method="get"] input[type="text"] {
+    flex: 2 1 260px;
+    padding: 14px 18px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+form[method="get"] input[type="text"]::placeholder {
+    color: var(--text-dim);
+}
+
+form[method="get"] input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 2px 2px 0px var(--accent);
+}
+
+/* Dropdown Filters */
+form[method="get"] select {
+    flex: 1 1 200px;
+    padding: 14px 18px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+form[method="get"] select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 2px 2px 0px var(--accent);
+}
+
+form[method="get"] select option {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+/* Filter Submit Button */
+form[method="get"] button[type="submit"] {
+    padding: 14px 28px;
+    background: var(--paper-white);
+    color: var(--bg-canvas);
+    border: 1px solid var(--paper-white);
+    border-radius: var(--radius-sharp);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--accent);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+form[method="get"] button[type="submit"]:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--accent);
+    background: #ffffff;
+}
+
+form[method="get"] button[type="submit"]:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--accent);
+}
+
+/* ==========================================================================
+   Catalog Index: Events Grid (ul, li, a)
+   ========================================================================== */
+
+main > ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 32px;
+    padding: 0;
+    margin: 0;
+    counter-reset: catalog-counter;
+}
+
+main > ul > li {
+    display: flex;
+    counter-increment: catalog-counter;
+}
+
+/* Event Card as Architectural Placard */
+main > ul > li > a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 34px 30px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+/* Automatic Catalog Counter Top Right Badge: [01], [02], [03]... */
+main > ul > li > a::after {
+    content: "[" counter(catalog-counter, decimal-leading-zero) "]";
+    position: absolute;
+    top: 24px;
+    right: 26px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    transition: transform 0.2s ease;
+}
+
+/* Tactile Brutalist Physical Hover */
+main > ul > li > a:hover {
+    transform: translate(-5px, -5px);
+    background: var(--bg-surface-hover);
+    border-color: var(--accent);
+    box-shadow: var(--hard-shadow-card);
+}
+
+main > ul > li > a:hover::after {
+    transform: translateX(2px);
+    color: var(--paper-white);
+}
+
+/* Card Title (h2 in Syne display font) */
+main > ul > li > a > h2 {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    color: var(--paper-white);
+    margin-bottom: 14px;
+    padding-right: 48px;
+    transition: color 0.2s ease;
+}
+
+main > ul > li > a:hover > h2 {
+    color: var(--accent);
+}
+
+/* Card Description (1st p) */
+main > ul > li > a > p:nth-of-type(1) {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Card Location (2nd p: Monospace technical tag) */
+main > ul > li > a > p:nth-of-type(2) {
+    font-family: var(--font-mono);
+    font-size: 0.825rem;
+    color: var(--text-dim);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+main > ul > li > a > p:nth-of-type(2)::before {
+    content: "LOC //";
+    color: var(--border-strong);
+    font-weight: 700;
+}
+
+/* Card Status Badge (3rd/last p: Technical Stamp) */
+main > ul > li > a > p:nth-of-type(3),
+main > ul > li > a > p:last-of-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding: 6px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: #090a0d;
+    color: var(--paper-white);
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    margin-top: auto;
+}
+
+main > ul > li > a > p:last-of-type::before {
+    content: "■";
+    color: var(--accent);
+    font-size: 0.7rem;
+}
+
+/* Empty Catalog Notice */
+main > p:only-of-type {
+    text-align: center;
+    padding: 80px 24px;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    background: var(--bg-surface);
+    border: 2px dashed var(--border-line);
+    border-radius: var(--radius-sharp);
+    margin: 40px auto;
+    max-width: 640px;
+}
+
+main > p:only-of-type::before {
+    content: "// EMPTY QUERY //\A";
+    white-space: pre;
+    color: var(--accent);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   Detail Dossier View (main when inspecting single event)
+   ========================================================================== */
+
+main:has(> a[href*="edit"]):has(> a[href*="delete"]) {
+    max-width: 860px;
+    background: var(--bg-surface);
+    border: 2px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    padding: 56px 52px;
+    position: relative;
+    margin: 20px auto 80px;
+    box-shadow: 8px 8px 0px #000000;
+}
+
+/* Architectural top dossier label */
+main:has(> a[href*="edit"]):has(> a[href*="delete"])::before {
+    content: "ARCHIVE DOSSIER // ENTRY DETAIL";
+    position: absolute;
+    top: -12px;
+    left: 28px;
+    background: var(--bg-canvas);
+    padding: 0 12px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+}
+
+/* Event Title in Detail */
+main:has(> a[href*="edit"]):has(> a[href*="delete"]) > h1 {
+    font-size: 3rem;
+    margin-bottom: 24px;
+    line-height: 1.15;
+}
+
+/* Event Description (Editorial Left-Bar Quotation block) */
+main:has(> a[href*="edit"]):has(> a[href*="delete"]) > p:nth-of-type(1) {
+    font-size: 1.25rem;
+    color: var(--paper-white);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    padding: 20px 24px;
+    background: rgba(0, 0, 0, 0.35);
+    border-left: 4px solid var(--accent);
+}
+
+/* Category Monospace Tag */
+main:has(> a[href*="edit"]):has(> a[href*="delete"]) > p:nth-of-type(2) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    background: #090a0d;
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    margin-right: 14px;
+    margin-bottom: 24px;
+}
+
+main:has(> a[href*="edit"]):has(> a[href*="delete"]) > p:nth-of-type(2)::before {
+    content: "CAT //";
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Location Technical Spec */
+main:has(> a[href*="edit"]):has(> a[href*="delete"]) > p:nth-of-type(3) {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+main:has(> a[href*="edit"]):has(> a[href*="delete"]) > p:nth-of-type(3)::before {
+    content: "VENUE //";
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Status Stamp */
+main:has(> a[href*="edit"]):has(> a[href*="delete"]) > p:nth-of-type(4) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 8px 18px;
+    background: #090a0d;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sharp);
+    color: var(--paper-white);
+    margin-bottom: 44px;
+}
+
+main:has(> a[href*="edit"]):has(> a[href*="delete"]) > p:nth-of-type(4)::before {
+    content: "STATUS //";
+    color: var(--accent);
+}
+
+/* Action Buttons in Detail */
+a[href*="edit"] {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    background: var(--accent);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: var(--radius-sharp);
+    border: 1px solid var(--accent);
+    box-shadow: var(--hard-shadow-white);
+    margin-right: 16px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+a[href*="edit"]:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--paper-white);
+}
+
+a[href*="edit"]:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--paper-white);
+}
+
+a[href*="delete"] {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    background: transparent;
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: var(--radius-sharp);
+    box-shadow: var(--hard-shadow-danger);
+    margin-right: 16px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+a[href*="delete"]:hover {
+    transform: translate(-2px, -2px);
+    background: var(--danger);
+    color: #ffffff;
+    box-shadow: 5px 5px 0px #ffffff;
+}
+
+a[href*="delete"]:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #ffffff;
+}
+
+/* Return / Back Link */
+main > a:last-of-type,
+main > form + a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    transition: all 0.2s ease;
+}
+
+main > a:last-of-type:hover,
+main > form + a:hover {
+    color: var(--paper-white);
+    border-color: var(--border-strong);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   Post Forms: Create & Edit View
+   ========================================================================== */
+
+main:has(> form[method="post"]) {
+    max-width: 720px;
+    margin: 20px auto 80px;
+}
+
+form[method="post"] {
+    background: var(--bg-surface);
+    border: 2px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    padding: 44px;
+    margin-bottom: 28px;
+    position: relative;
+    box-shadow: 6px 6px 0px #000000;
+}
+
+/* Dossier Form Tab Header */
+form[method="post"]::before {
+    content: "FORM // DATA ENTRY";
+    position: absolute;
+    top: -11px;
+    left: 24px;
+    background: var(--bg-canvas);
+    padding: 0 10px;
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+}
+
+/* Field paragraphs generated by form.as_p */
+form[method="post"] > p {
+    margin-bottom: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+form[method="post"] label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--paper-white);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+form[method="post"] input[type="text"],
+form[method="post"] input[type="number"],
+form[method="post"] input[type="email"],
+form[method="post"] textarea,
+form[method="post"] select {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-line);
+    border-radius: var(--radius-sharp);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+form[method="post"] textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+form[method="post"] input:focus,
+form[method="post"] textarea:focus,
+form[method="post"] select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 2px 2px 0px var(--accent);
+}
+
+form[method="post"] select option {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+/* Form Action Submit Button */
+form[method="post"] button[type="submit"] {
+    width: 100%;
+    padding: 16px 28px;
+    background: var(--accent);
+    color: #ffffff;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sharp);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--paper-white);
+    margin-top: 12px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+form[method="post"] button[type="submit"]:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--paper-white);
+    background: var(--accent-hover);
+}
+
+form[method="post"] button[type="submit"]:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--paper-white);
+}
+
+/* Technical Error List */
+form ul.errorlist,
+form p > ul {
+    list-style: none;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--danger);
+    border-radius: var(--radius-sharp);
+    padding: 12px 18px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+form ul.errorlist li,
+form p > ul li {
+    font-family: var(--font-mono);
+    color: #fca5a5;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+form ul.errorlist li::before,
+form p > ul li::before {
+    content: "[ERR] //";
+    color: var(--danger);
+}
+
+/* ==========================================================================
+   Delete Confirmation Specifics
+   ========================================================================== */
+
+main:has(form a[href*="event_detail"]) {
+    max-width: 640px;
+    margin: 40px auto;
+}
+
+form[method="post"]:has(a[href*="event_detail"]) button[type="submit"],
+form[method="post"]:has(a[href*="/events/"]) button[type="submit"] {
+    background: var(--danger);
+    border-color: var(--danger);
+    box-shadow: 4px 4px 0px var(--paper-white);
+    width: auto;
+    display: inline-flex;
+    padding: 14px 32px;
+    margin-right: 14px;
+    margin-top: 0;
+}
+
+form[method="post"]:has(a[href*="event_detail"]) button[type="submit"]:hover {
+    box-shadow: 6px 6px 0px var(--paper-white);
+}
+
+form[method="post"]:has(a[href*="event_detail"]) > a {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 26px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sharp);
+    border: 1px solid var(--border-line);
+    transition: all 0.2s ease;
+}
+
+form[method="post"]:has(a[href*="event_detail"]) > a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--paper-white);
+    border-color: var(--border-strong);
+}
+
+/* Successful Deletion Stamp */
+main > p:first-child:has(+ a[href*="index"]) {
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid #10b981;
+    color: #6ee7b7;
+    padding: 24px 28px;
+    border-radius: var(--radius-sharp);
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+main > p:first-child:has(+ a[href*="index"])::before {
+    content: "[CONFIRMED] //";
+    color: #10b981;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px 20px;
+    }
+
+    header nav > div {
+        justify-content: space-between;
+    }
+
+    main {
+        padding: 30px 20px 70px;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    main > ul {
+        grid-template-columns: 1fr;
+    }
+
+    form[method="get"] {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    form[method="get"] input[type="text"],
+    form[method="get"] select,
+    form[method="get"] button[type="submit"] {
+        width: 100%;
+        flex: 1 1 auto;
+    }
+
+    main:has(> a[href*="edit"]):has(> a[href*="delete"]),
+    form[method="post"] {
+        padding: 30px 22px;
+    }
+}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Удаление события — EventFlow{% endblock %}
+
+{% block content %}
+{% if deleted %}
+    <p>Событие "{{ event.title }}" было успешно удалено.</p>
+    <a href="{% url 'index' %}">Вернуться к списку событий</a>
+{% else %}
+    <h1>Вы действительно хотите удалить событие {{ event.title }}?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+        <a href="{% url 'event_detail' event.id %}">Отменить</a>
+    </form>
+{% endif %}
+{% endblock %}

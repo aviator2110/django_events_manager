@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление события — EventFlow{% endblock %}
+
+{% block content %}
+<h1>Добавление нового события</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
+</form>
+<a href="{% url 'index' %}">Вернуться к списку событий</a>
+{% endblock %}

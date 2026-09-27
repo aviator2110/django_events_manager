@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Все события — EventFlow{% endblock %}
+
+{% block content %}
+<h1>События</h1>
+<a href="{% url 'event_create' %}">+ Добавить событие</a>
+
+<form method="get">
+    <input type="text" name="query" placeholder="Поиск по названию или описанию...">
+    <select name="category">
+        <option value="">Все категории</option>
+        <option value="Technology">Technology</option>
+        <option value="Sport">Sport</option>
+        <option value="Education">Education</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Other">Other</option>
+    </select>
+    <select name="status">
+        <option value="">Все статусы</option>
+        <option value="open_for_registration">Open for registration</option>
+        <option value="ongoing">Ongoing</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+        <option value="planned">Planned</option>
+        <option value="upcoming">Upcoming</option>
+    </select>
+    <button type="submit">Найти</button>
+</form>
+
+{% if events %}
+    <ul>
+        {% for event in events %}
+            <li>
+                <a href="{% url 'event_detail' event.id %}">
+                    <h2>{{ event.title }}</h2>
+                    <p>{{ event.description }}</p>
+                    <p>{{ event.location }}</p>
+                    <p>{{ event.status }}</p>
+                </a>    
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Событий пока нет.</p>
+{% endif %}
+{% endblock %}
